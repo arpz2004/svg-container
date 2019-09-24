@@ -12,6 +12,14 @@
 
 .variable-height-row {
   height: 10vh;
+
+  &.height-5vh {
+    height: 5vh;
+  }
+
+  &.height-15vh {
+    height: 15vh;
+  }
 }
 
 .no-borders {
