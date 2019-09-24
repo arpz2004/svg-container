@@ -6,8 +6,8 @@
 
 .inner-container {
   position: absolute;
-  height: 200px;
-  width: 200px;
+  height: 20vh;
+  width: 20vw;
   background-color: yellow;
   top: calc(50% - 100px);
   &.fa-svg{
@@ -38,10 +38,10 @@
 
 .scaling-svg-container {
   position: relative; 
-  height: 0; 
-  width: 100%; 
+  height: 100%; 
+  width: 0; 
   padding: 0;
-  padding-bottom: 100%;
+  padding-right: 100%;
   /* over-ride this inline for aspect ratio other than square */
 }
 .scaling-svg {
