@@ -1,0 +1,32 @@
+.svg-container {
+  position: relative; 
+
+  ::ng-deep svg {
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    left: 0; 
+    top: 0;
+  }
+}
+
+.variable-height-row {
+  height: 10vh;
+
+  &.height-5vh {
+    height: 5vh;
+  }
+
+  &.height-15vh {
+    height: 15vh;
+  }
+}
+
+.no-borders {
+  border: none;
+}
+
+.second-column {
+  background: red;
+  height: 50vh;
+}
