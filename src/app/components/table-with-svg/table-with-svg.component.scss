@@ -1,0 +1,22 @@
+.svg-container {
+  position: relative; 
+  height: 100%; 
+  width: 0; 
+  padding: 0;
+  padding-right: 100%;
+  /* over-ride this inline for aspect ratio other than square */
+
+  ::ng-deep svg {
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    left: 0; 
+    top: 0;
+  }
+}
+
+.td {
+  position: relative;
+  height: 100%;
+}
+
