@@ -1,14 +1,53 @@
 .outer-container {
-    height: 100vh;
-    width: 100vw;
-    background-color: red;
+  height: 100vh;
+  width: 100vw;
+  background-color: red;
 }
 
 .inner-container {
-    position: absolute;
-    height: 200px;
-    width: 200px;
-    background-color: yellow;
-    top: calc(50% - 100px);
-    left: calc(50% - 100px);
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  background-color: yellow;
+  top: calc(50% - 100px);
+  &.fa-svg{
+    left: calc(50% - 250px);
+  }
+
+  &.inline-svg {
+    left: calc(50% + 50px);
+  }
+}
+
+.icon-container {
+  position: relative; 
+  height: 0; 
+  width: 100%; 
+  padding: 0;
+  padding-bottom: 100%; 
+  /* over-ride this inline for aspect ratio other than square */
+
+  // .scaling-svg {
+  //   position: absolute; 
+  //   height: 100%; 
+  //   width: 100%; 
+  //   left: 0; 
+  //   top: 0;
+  // }
+}
+
+.scaling-svg-container {
+  position: relative; 
+  height: 0; 
+  width: 100%; 
+  padding: 0;
+  padding-bottom: 100%;
+  /* over-ride this inline for aspect ratio other than square */
+}
+.scaling-svg {
+  position: absolute; 
+  height: 100%; 
+  width: 100%; 
+  left: 0; 
+  top: 0;
 }
