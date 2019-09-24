@@ -4,26 +4,26 @@
   background-color: red;
 }
 
-.inner-container {
+.inner-container-group {
   position: absolute;
-  height: 20vh;
-  width: 20vw;
-  background-color: yellow;
   top: calc(50% - 100px);
-  &.fa-svg{
-    left: calc(50% - 250px);
-  }
+  left: calc(50% - 100px);
 
-  &.inline-svg {
-    left: calc(50% + 50px);
+  .inner-container {
+    height: 20vh;
+    width: 20vw;
+
+    &.fa-svg{
+      background-color: purple;
+    }
+  
+    &.inline-svg {
+      background-color: yellow;
+    }
   }
 }
 
-.d-block {
-  display: block !important;
-}
-
-.scaling-svg-container {
+.svg-container {
   position: relative; 
   height: 100%; 
   width: 0; 
@@ -38,4 +38,12 @@
     left: 0; 
     top: 0;
   }
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
 }
