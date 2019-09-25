@@ -1,5 +1,17 @@
 .svg-container {
-  position: relative; 
+  position: relative;
+  z-index: 1000;
+  padding: 0;
+
+  .svg-wrapper{
+    position: absolute; 
+    height: 100%; 
+    width: 100%; 
+    left: 0; 
+    top: 0;
+    z-index: 1001;
+    padding-right: 19px;
+  }
 
   ::ng-deep svg {
     position: absolute; 
@@ -7,6 +19,7 @@
     width: 100%; 
     left: 0; 
     top: 0;
+    z-index: 1001
   }
 }
 
@@ -33,9 +46,17 @@
 
 .table-container {
   height: 20vh;
+  width: 100%;
 }
 
 .table-wrapper {
   overflow: auto;
   height: 100%;
+  width: 100%;
+}
+
+tbody {
+  tr {
+    position: relative;
+  }
 }
