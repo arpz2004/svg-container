@@ -13,7 +13,6 @@ export class OverflowTableWithSvgComponent implements OnInit {
   @ViewChild('tableContainer', { static: false }) tableContainer: ElementRef;
   @ViewChild('tableWrapper', { static: false }) tableWrapper: ElementRef;
   @ViewChild('table', { static: false }) table: ElementRef;
-  @ViewChild('row', { static: false }) row: ElementRef;
 
   constructor() { }
 
@@ -28,13 +27,14 @@ export class OverflowTableWithSvgComponent implements OnInit {
   }
 
   positionTriangle() {
+    const table = $(this.table.nativeElement);
+    const tableWidth = table.width();
     const tableContainerWidth = $(this.tableContainer.nativeElement).width();
-    const tableWidth = $(this.table.nativeElement).width();
     const tableWrapperHeight = $(this.tableWrapper.nativeElement).height();
     const scrollPosiiton = $(this.tableWrapper.nativeElement).scrollTop();
-    const row = $(this.row.nativeElement);
-    let rowHeight = row.height();
-    const rowPosition = row.position();
+    const row = $(table).children().find('tr.row-with-svg')[0];
+    let rowHeight = $(row).height();
+    const rowPosition = $(row).position();
     const triangleYPosition = rowPosition.top - scrollPosiiton;
     const triangleXPosition = `calc(100% - ${tableContainerWidth - tableWidth}px)`;
     if (triangleYPosition < 0) {
@@ -43,7 +43,7 @@ export class OverflowTableWithSvgComponent implements OnInit {
       rowHeight = tableWrapperHeight - triangleYPosition;
     }
     const triangleAboveOrBelowTable = rowHeight <= 0;
-    const triangle = row.children().find('svg')[0];
+    const triangle = $(row).children().find('svg')[0];
     $(triangle).css({ top: triangleYPosition > 0 ? triangleYPosition : 0, left: triangleXPosition, height: rowHeight, display: triangleAboveOrBelowTable ? 'none' : 'block' });
   }
 
