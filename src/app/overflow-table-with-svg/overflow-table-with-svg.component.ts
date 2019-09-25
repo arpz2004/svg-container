@@ -23,7 +23,7 @@ export class OverflowTableWithSvgComponent implements OnInit {
 
   ngAfterViewInit() {
     this.positionTriangle();
-    $(this.tableWrapper.nativeElement).scroll(() => {
+    $(this.tableWrapper.nativeElement).on('scroll resize', () => {
       this.positionTriangle();
     });
   }
@@ -33,12 +33,17 @@ export class OverflowTableWithSvgComponent implements OnInit {
     const tableWidth = $(this.table.nativeElement).width();
     const tableWrapperHeight = $(this.tableWrapper.nativeElement).height();
     const scrollPosiiton = $(this.tableWrapper.nativeElement).scrollTop();
-    const rowHeight = $(this.row.nativeElement).height();
+    let rowHeight = $(this.row.nativeElement).height();
     const rowPosition = $(this.row.nativeElement).position();
     const triangleYPosition = rowPosition.top - scrollPosiiton;
     const triangleXPosition = `calc(100% - ${tableContainerWidth - tableWidth}px)`;
-    const triangleAboveOrBelowTable = triangleYPosition < 0 || triangleYPosition > tableWrapperHeight - rowHeight;
-    $(this.triangle.nativeElement).css({ top: triangleYPosition, left: triangleXPosition, height: rowHeight, display: triangleAboveOrBelowTable ? 'none' : 'block' });
+    if (triangleYPosition < 0) {
+      rowHeight = rowHeight + triangleYPosition;
+    } else if (triangleYPosition + rowHeight > tableWrapperHeight) {
+      rowHeight = tableWrapperHeight - triangleYPosition;
+    }
+    const triangleAboveOrBelowTable = rowHeight <= 0;
+    $(this.triangle.nativeElement).css({ top: triangleYPosition > 0 ? triangleYPosition : 0, left: triangleXPosition, height: rowHeight, display: triangleAboveOrBelowTable ? 'none' : 'block' });
   }
 
 }
