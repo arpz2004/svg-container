@@ -11,6 +11,7 @@ export class OverflowTableWithSvgComponent implements OnInit {
   faCoffee = faCoffee;
 
   @ViewChild('triangle', { static: false }) triangle: ElementRef;
+  @ViewChild('tableContainer', { static: false }) tableContainer: ElementRef;
   @ViewChild('tableWrapper', { static: false }) tableWrapper: ElementRef;
   @ViewChild('table', { static: false }) table: ElementRef;
   @ViewChild('row', { static: false }) row: ElementRef;
@@ -28,12 +29,12 @@ export class OverflowTableWithSvgComponent implements OnInit {
   }
 
   positionTriangle() {
-    const tableWrapperWidth = $(this.tableWrapper.nativeElement).width();
+    const tableContainerWidth = $(this.tableContainer.nativeElement).width();
     const tableWidth = $(this.table.nativeElement).width();
     const scrollPosiiton = $(this.tableWrapper.nativeElement).scrollTop();
     const rowHeight = $(this.row.nativeElement).height();
     const rowPosition = $(this.row.nativeElement).position();
-    $(this.triangle.nativeElement).css({ top: rowPosition.top - scrollPosiiton, left: `calc(100% - ${tableWrapperWidth - tableWidth}px)`, height: rowHeight });
+    $(this.triangle.nativeElement).css({ top: rowPosition.top - scrollPosiiton, left: `calc(100% - ${tableContainerWidth - tableWidth}px)`, height: rowHeight });
   }
 
 }
