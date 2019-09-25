@@ -21,12 +21,19 @@ export class OverflowTableWithSvgComponent implements OnInit {
   }
 
   ngAfterViewInit() {
+    this.positionTriangle();
+    $(this.tableWrapper.nativeElement).scroll(() => {
+      this.positionTriangle();
+    });
+  }
+
+  positionTriangle() {
     const tableWrapperWidth = $(this.tableWrapper.nativeElement).width();
     const tableWidth = $(this.table.nativeElement).width();
     const scrollPosiiton = $(this.tableWrapper.nativeElement).scrollTop();
     const rowHeight = $(this.row.nativeElement).height();
     const rowPosition = $(this.row.nativeElement).position();
-    $(this.triangle.nativeElement).css({ top: rowPosition.top, left: `calc(100% - ${tableWrapperWidth - tableWidth}px)`, height: rowHeight });
+    $(this.triangle.nativeElement).css({ top: rowPosition.top - scrollPosiiton, left: `calc(100% - ${tableWrapperWidth - tableWidth}px)`, height: rowHeight });
   }
 
 }
