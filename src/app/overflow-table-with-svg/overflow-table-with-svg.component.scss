@@ -26,12 +26,9 @@ svg {
 .table-container {
   position: relative;
   height: 20vh;
-  width: 100%;
 }
 
 .table-wrapper {
-  overflow-y: auto;
-  overflow-x: visible;
+  overflow: auto;
   height: 100%;
-  width: 100%;
 }
