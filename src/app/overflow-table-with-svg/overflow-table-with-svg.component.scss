@@ -1,26 +1,9 @@
-.svg-container {
-  position: relative;
-  z-index: 1000;
-  padding: 0;
-
-  .svg-wrapper{
-    position: absolute; 
-    height: 100%; 
-    width: 100%; 
-    left: 0; 
-    top: 0;
-    z-index: 1001;
-    padding-right: 19px;
-  }
-
-  ::ng-deep svg {
-    position: absolute; 
-    height: 100%; 
-    width: 100%; 
-    left: 0; 
-    top: 0;
-    z-index: 1001
-  }
+svg {
+  position: absolute; 
+  width: 20px; 
+  left: 100%; 
+  top: 0;
+  z-index: 1001
 }
 
 .variable-height-row {
@@ -35,28 +18,20 @@
   }
 }
 
-.no-borders {
-  border: none;
-}
-
 .second-column {
   background: red;
   height: 50vh;
 }
 
 .table-container {
+  position: relative;
   height: 20vh;
   width: 100%;
 }
 
 .table-wrapper {
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: visible;
   height: 100%;
   width: 100%;
-}
-
-tbody {
-  tr {
-    position: relative;
-  }
 }
