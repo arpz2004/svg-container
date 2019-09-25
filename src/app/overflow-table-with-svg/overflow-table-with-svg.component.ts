@@ -31,10 +31,14 @@ export class OverflowTableWithSvgComponent implements OnInit {
   positionTriangle() {
     const tableContainerWidth = $(this.tableContainer.nativeElement).width();
     const tableWidth = $(this.table.nativeElement).width();
+    const tableWrapperHeight = $(this.tableWrapper.nativeElement).height();
     const scrollPosiiton = $(this.tableWrapper.nativeElement).scrollTop();
     const rowHeight = $(this.row.nativeElement).height();
     const rowPosition = $(this.row.nativeElement).position();
-    $(this.triangle.nativeElement).css({ top: rowPosition.top - scrollPosiiton, left: `calc(100% - ${tableContainerWidth - tableWidth}px)`, height: rowHeight });
+    const triangleYPosition = rowPosition.top - scrollPosiiton;
+    const triangleXPosition = `calc(100% - ${tableContainerWidth - tableWidth}px)`;
+    const triangleAboveOrBelowTable = triangleYPosition < 0 || triangleYPosition > tableWrapperHeight - rowHeight;
+    $(this.triangle.nativeElement).css({ top: triangleYPosition, left: triangleXPosition, height: rowHeight, display: triangleAboveOrBelowTable ? 'none' : 'block' });
   }
 
 }
