@@ -13,6 +13,7 @@ export class OverflowTableWithSvgComponent implements OnInit {
   @ViewChild('triangle', { static: false }) triangle: ElementRef;
   @ViewChild('tableWrapper', { static: false }) tableWrapper: ElementRef;
   @ViewChild('table', { static: false }) table: ElementRef;
+  @ViewChild('row', { static: false }) row: ElementRef;
 
   constructor() { }
 
@@ -22,7 +23,9 @@ export class OverflowTableWithSvgComponent implements OnInit {
   ngAfterViewInit() {
     const tableWrapperWidth = $(this.tableWrapper.nativeElement).width();
     const tableWidth = $(this.table.nativeElement).width();
-    console.log($(this.triangle.nativeElement).css({ top: 100, left: `calc(100% - ${tableWrapperWidth - tableWidth}px)` }));
+    const rowHeight = $(this.row.nativeElement).height();
+    const rowPosition = $(this.row.nativeElement).position();
+    console.log($(this.triangle.nativeElement).css({ top: rowPosition.top, left: `calc(100% - ${tableWrapperWidth - tableWidth}px)`, height: rowHeight }));
     console.log($(this.tableWrapper.nativeElement).width());
     console.log($(this.table.nativeElement).width());
   }
